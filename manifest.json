@@ -3,6 +3,12 @@
     "name": "Tab Switcher",
     "version": "1.0",
     "description": "Switch tabs or go to a new URL using a keyboard shortcut",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{6ed1b86a-da14-4cf3-ae3f-8a8b6c2323a1}",
+            "strict_min_version": "112.0"
+        }
+    },
     "permissions": [
         "tabs",
         "history"
