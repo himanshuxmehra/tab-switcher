@@ -32,7 +32,10 @@ filterButtons.forEach(button => {
   });
 });
 
-searchInput.focus();
+// Ensure search input is focused when popup opens
+setTimeout(() => {
+  searchInput.focus();
+}, 100);
 
 searchInput.addEventListener('input', (e) => {
   showSuggestions(e.target.value);
@@ -111,17 +114,17 @@ async function updateResults() {
     }
   }
 
-  if ((currentFilter === 'all' || currentFilter === 'history') && remainingQuery) {
-    const historyItems = await searchHistory(remainingQuery, operators);
-    if (historyItems.length > 0) {
-      renderResults(historyItems, 'history');
-    }
-  }
-
   if ((currentFilter === 'all' || currentFilter === 'bookmarks') && remainingQuery) {
     const bookmarkItems = await searchBookmarks(remainingQuery, operators);
     if (bookmarkItems.length > 0) {
       renderResults(bookmarkItems, 'bookmark');
+    }
+  }
+
+  if ((currentFilter === 'all' || currentFilter === 'history') && remainingQuery) {
+    const historyItems = await searchHistory(remainingQuery, operators);
+    if (historyItems.length > 0) {
+      renderResults(historyItems, 'history');
     }
   }
 
